@@ -26,6 +26,6 @@ describe('Testando componente RegisterPage', () => {
     const loginButton = screen.getByTestId(LOGIN_BUTTON);
     expect(loginButton).toBeInTheDocument();
     expect(loginButton).toHaveAttribute('type', 'submit');
-    expect(loginButton).toHaveAttribute('innerText', 'Entrar');
+    expect(loginButton).toHaveTextContent('Entrar');
   });
 });
