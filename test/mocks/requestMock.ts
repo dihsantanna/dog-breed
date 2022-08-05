@@ -20,7 +20,7 @@ export const loginSuccess = {
   },
 };
 
-const regexp = /https:\/\/dogbreed-api\.q9\.com\.br\/list(\?breed=)?/g;
+const regexp = /\/list(\?breed=)?/g;
 
 export const mockRequestData = async (endpoint: string) => ({
   status: 200,
