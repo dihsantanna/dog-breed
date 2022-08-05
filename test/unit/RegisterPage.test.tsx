@@ -1,10 +1,11 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
+import { render, screen } from '../utils/test-utils';
 import { EMAIL_INPUT, LOGIN_BUTTON, LOGO_IMG } from '../utils/testIds';
+import { RegisterPage } from '../../src/pages/RegisterPage';
 
-describe.skip('Testando componente RegisterPage', () => {
-  afterAll(() => {
+describe('Testando componente RegisterPage', () => {
+  beforeEach(() => {
     render(<RegisterPage />);
   });
 
