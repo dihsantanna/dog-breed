@@ -6,7 +6,7 @@ import { render, screen } from '../utils/test-utils';
 import App from '../../src/App';
 import { loginSuccess, mockRequestData } from '../mocks/requestMock';
 import {
-  EMAIL_INPUT, LIST_PAGE, LOGIN_BUTTON, REGISTER_PAGE,
+  EMAIL_INPUT, LIST_PAGE, LOGIN_BUTTON,
 } from '../utils/testIds';
 
 describe.skip('Testando rota "/register"', () => {
@@ -17,9 +17,9 @@ describe.skip('Testando rota "/register"', () => {
   it('Ao acessar rota "/" é redirecionado para rota "/register', () => {
     const { history } = render(<App />);
     const { pathname } = history.location();
-    const registerPage = screen.getByTestId(REGISTER_PAGE);
+    const loginButton = screen.getByTestId(LOGIN_BUTTON);
     expect(pathname).toBe('/register');
-    expect(registerPage).toBeInTheDocument();
+    expect(loginButton).toBeInTheDocument();
   });
 
   it(`Ao digitar email válido no campo de registro e clicar no botão "Entrar"
