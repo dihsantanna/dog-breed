@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '../utils/test-utils';
 
 import App from '../../src/App';
@@ -9,9 +9,9 @@ import {
   EMAIL_INPUT, LIST_PAGE, LOGIN_BUTTON,
 } from '../utils/testIds';
 
-describe.skip('Testando rota "/register"', () => {
+describe('Testando rota "/register"', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('Ao acessar rota "/" é redirecionado para rota "/register', () => {
@@ -24,7 +24,7 @@ describe.skip('Testando rota "/register"', () => {
 
   it(`Ao digitar email válido no campo de registro e clicar no botão "Entrar"
   é redirecionado para a rota "/list"`, async () => {
-    jest.spyOn(axios, 'get')
+    vi.spyOn(axios, 'get')
       .mockResolvedValueOnce(loginSuccess)
       .mockImplementation(mockRequestData);
 
@@ -44,7 +44,7 @@ describe.skip('Testando rota "/register"', () => {
 
   it(`Se o usuário já estiver logado, ao acessar a rota "/register",
   deve ser redirecionado para rota "/list"`, async () => {
-    jest.spyOn(axios, 'get')
+    vi.spyOn(axios, 'get')
       .mockResolvedValueOnce(loginSuccess)
       .mockImplementation(mockRequestData);
 
