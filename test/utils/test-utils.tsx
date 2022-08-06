@@ -16,7 +16,7 @@ const renderWithRouter = (ui: React.ReactElement, { route = '/' } = {}) => {
       wrapper: BrowserRouter,
     }),
     history: {
-      push: (to: string) => window.history.pushState({}, 'Test page', to),
+      push: (to: string) => window.history.replaceState({}, 'Test page', to),
       location: () => window.location,
     },
   });
