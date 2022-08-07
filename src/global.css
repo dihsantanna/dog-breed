@@ -1,0 +1,15 @@
+:root {
+  --shell-color: #ffecec;
+  --sweet-black: #1f1f1d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--shell-color);
+  font-family: 'Inter', sans-serif;
+}
