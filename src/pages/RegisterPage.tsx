@@ -5,6 +5,7 @@ import { EMAIL_INPUT, LOGIN_BUTTON, LOGO_IMG } from '../../test/utils/testIds';
 import { requestLogin } from '../services/request';
 import { IError } from '../types/IErrorApi';
 import { IUser } from '../types/IUser';
+import './registerPage.css';
 
 export function RegisterPage() {
   const [inputLogin, setInputLogin] = useState('');
@@ -27,7 +28,6 @@ export function RegisterPage() {
   const isLogged = useCallback(() => {
     const token = localStorage.getItem('token');
     if (token && !jwtDecode<InvalidTokenError>(token).message) {
-      console.log('entreiaki');
       navigate('../list', { replace: true });
     }
   }, [navigate]);
@@ -37,14 +37,16 @@ export function RegisterPage() {
   }, [isLogged]);
 
   return (
-     <>
+     <div className="register-page">
       <img
         data-testid={LOGO_IMG}
         src='src/assets/dog_breed_logo.svg'
         alt="logo dog breed"
+        className='register-logo'
       />
       <form onSubmit={handleSubmit}>
         <label>
+          Login:
           <input
             data-testid={EMAIL_INPUT}
             type="email"
@@ -52,7 +54,7 @@ export function RegisterPage() {
             value={inputLogin}
             onChange={({ target }) => setInputLogin(target.value)}
           />
-          {loginError ? <span>{loginError}</span> : null}
+          <span>{loginError || null}</span>
         </label>
         <button
           data-testid={LOGIN_BUTTON}
@@ -62,6 +64,6 @@ export function RegisterPage() {
             Entrar
           </button>
       </form>
-    </>
+    </div>
   );
 }

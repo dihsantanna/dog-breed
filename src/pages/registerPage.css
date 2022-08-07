@@ -1,0 +1,67 @@
+.register-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.register-logo {
+  margin-top: 5rem;
+  width: 20rem;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+  width: 20rem;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.12rem;
+  width: 100%;
+}
+
+form input {
+  align-items: center;
+  border: none;
+  border-radius: 0.62rem;
+  display: flex;
+  font-size: 0.87rem;
+  height: 2.75rem;
+  margin-top: 0.6rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+form input::-webkit-input-placeholder {
+  color: #b3b3b3;
+  font-size: 1.12rem;
+}
+
+form span {
+  align-items: center;
+  color: red;
+  display: flex;
+  font-size: 0.87rem;
+  font-weight: 600;
+  height: 1.56rem;
+  justify-content: center;
+  width: 100%;
+}
+
+form button {
+  background-color: var(--sweet-black);
+  border: none;
+  border-radius: 0.62rem;
+  color: var(--shell-color);
+  font-size: 1.12rem;
+  font-weight: bold;
+  height: 2.75rem;
+  width: 100%;
+}
