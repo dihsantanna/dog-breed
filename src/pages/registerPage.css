@@ -59,6 +59,7 @@ form button {
   background-color: var(--sweet-black);
   border: none;
   border-radius: 0.62rem;
+  box-shadow:0 0.1rem 0 var(--sweet-black);
   color: var(--shell-color);
   font-size: 1.12rem;
   font-weight: bold;
@@ -69,5 +70,31 @@ form button {
 @media screen and (min-width: 376px) {
   .register-logo {
     width: 24.87rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .register-logo {
+    margin-top: 0;
+  }
+
+  form {
+    height: 10rem;
+  }
+
+  form button {
+    cursor: pointer;
+    opacity: 0.92;
+    transition: all 0.3s;
+  }
+
+  form button:hover {
+    opacity: 1;
+  }
+
+  form button:active {
+    position:relative;
+    top:0.1rem;
+    box-shadow: none;
   }
 }
