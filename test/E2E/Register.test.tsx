@@ -1,16 +1,23 @@
 import React from 'react';
-import { afterEach, describe, expect, it, MockedFunction, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
 import jwtDecode from 'jwt-decode';
 import { render, screen } from '../utils/test-utils';
 
 import App from '../../src/App';
-import { loginSuccess } from '../mocks/requestMock';
+import { loginError, loginSuccess } from '../mocks/requestMock';
 import {
   EMAIL_INPUT, LOGIN_BUTTON,
 } from '../utils/testIds';
 import { requestLogin } from '../../src/services/request';
 
 describe('Testando rota "/register"', () => {
+  beforeEach(() => {
+    vi.mock('../../src/services/request', () => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      const requestLogin = vi.fn();
+      return { requestLogin };
+    });
+  });
   afterEach(() => {
     vi.clearAllMocks();
     window.localStorage.clear();
@@ -26,12 +33,6 @@ describe('Testando rota "/register"', () => {
 
   it(`Ao digitar email válido no campo de registro e clicar no botão "Entrar"
   é redirecionado para a rota "/list"`, async () => {
-    vi.mock('../../src/services/request', () => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const requestLogin = vi.fn();
-      return { requestLogin };
-    });
-
     (requestLogin as unknown as MockedFunction<typeof requestLogin>)
       .mockResolvedValue(loginSuccess);
 
@@ -63,5 +64,24 @@ describe('Testando rota "/register"', () => {
     const { pathname } = history.location();
 
     expect(pathname).toBe('/list');
+  });
+
+  it(`Caso usuário tente logar com email invalido deve-se imprimir a mensagem
+  "Email is not valid"`, async () => {
+    (requestLogin as unknown as MockedFunction<typeof requestLogin>)
+      .mockResolvedValue(loginError);
+
+    const { user } = render(<App />);
+    const emailInput = screen.getByTestId(EMAIL_INPUT);
+    const loginButton = screen.getByTestId(LOGIN_BUTTON);
+
+    await user.click(emailInput);
+    await user.paste('email@invalido');
+
+    await user.click(loginButton);
+
+    const emailInvalidMsg = await screen.findByText('Email is not valid');
+
+    expect(emailInvalidMsg).toBeInTheDocument();
   });
 });

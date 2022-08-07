@@ -4,7 +4,7 @@ export const loginError = {
   status: 401,
   data: {
     error: {
-      message: 'error message',
+      message: 'Email is not valid',
     },
   },
 };
