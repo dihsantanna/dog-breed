@@ -65,3 +65,9 @@ form button {
   height: 2.75rem;
   width: 100%;
 }
+
+@media screen and (min-width: 376px) {
+  .register-logo {
+    width: 24.87rem;
+  }
+}
