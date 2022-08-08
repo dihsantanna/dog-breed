@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
 import { render, screen } from '../utils/test-utils';
 
 import { ListPage } from '../../src/pages/ListPage';
-import { DOG_IMG, LOGO_IMG } from '../utils/testIds';
+import { DOG_IMG_TESTID, LOGO_IMG_TESTID } from '../utils/testIds';
 import { requestData } from '../../src/services/request';
 import { mockRequestData } from '../mocks/requestMock';
 import { breeds } from '../mocks/breeds';
@@ -13,8 +13,8 @@ describe.skip('Testando componente ListPage', () => {
     render(<ListPage />);
   });
 
-  it(`Componente deve ter uma imagem com data-testid "${LOGO_IMG}"`, () => {
-    const logoImage = screen.getByTestId(LOGO_IMG);
+  it(`Componente deve ter uma imagem com data-testid "${LOGO_IMG_TESTID}"`, () => {
+    const logoImage = screen.getByTestId(LOGO_IMG_TESTID);
     expect(logoImage).toBeInTheDocument();
   });
 
@@ -31,7 +31,7 @@ describe.skip('Testando componente ListPage', () => {
   });
 
   it(`Componente deve se capaz de renderizar uma grade de imagens de cachorros,
-  onde cada imagem deve ter o data-testid ${DOG_IMG}<breed>-<index>`, () => {
+  onde cada imagem deve ter o data-testid ${DOG_IMG_TESTID}<breed>-<index>`, () => {
     vi.mock('../../src/services/request', () => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const requestData = vi.fn();
@@ -43,7 +43,7 @@ describe.skip('Testando componente ListPage', () => {
 
     const raceImages = breeds.chihuahua.list
       .map((_image, index) => screen
-        .getByTestId(DOG_IMG + breeds.chihuahua.breed + index));
+        .getByTestId(DOG_IMG_TESTID + breeds.chihuahua.breed + index));
 
     raceImages.forEach((image) => {
       expect(image).toBeInTheDocument();

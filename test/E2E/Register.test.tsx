@@ -6,7 +6,7 @@ import { render, screen } from '../utils/test-utils';
 import App from '../../src/App';
 import { loginError, loginSuccess } from '../mocks/requestMock';
 import {
-  EMAIL_INPUT, LOGIN_BUTTON,
+  EMAIL_INPUT_TESTID, LOGIN_BUTTON_TESTID,
 } from '../utils/testIds';
 import { requestLogin } from '../../src/services/request';
 
@@ -26,7 +26,7 @@ describe('Testando rota "/register"', () => {
   it('Ao acessar rota "/" é redirecionado para rota "/register', () => {
     const { history } = render(<App />);
     const { pathname } = history.location();
-    const loginButton = screen.getByTestId(LOGIN_BUTTON);
+    const loginButton = screen.getByTestId(LOGIN_BUTTON_TESTID);
     expect(pathname).toBe('/register');
     expect(loginButton).toBeInTheDocument();
   });
@@ -37,8 +37,8 @@ describe('Testando rota "/register"', () => {
       .mockResolvedValue(loginSuccess);
 
     const { user, history } = render(<App />);
-    const emailInput = screen.getByTestId(EMAIL_INPUT);
-    const loginButton = screen.getByTestId(LOGIN_BUTTON);
+    const emailInput = screen.getByTestId(EMAIL_INPUT_TESTID);
+    const loginButton = screen.getByTestId(LOGIN_BUTTON_TESTID);
 
     await user.click(emailInput);
     await user.paste('usuario@email.com');
@@ -72,8 +72,8 @@ describe('Testando rota "/register"', () => {
       .mockResolvedValue(loginError);
 
     const { user } = render(<App />);
-    const emailInput = screen.getByTestId(EMAIL_INPUT);
-    const loginButton = screen.getByTestId(LOGIN_BUTTON);
+    const emailInput = screen.getByTestId(EMAIL_INPUT_TESTID);
+    const loginButton = screen.getByTestId(LOGIN_BUTTON_TESTID);
 
     await user.click(emailInput);
     await user.paste('email@invalido');
