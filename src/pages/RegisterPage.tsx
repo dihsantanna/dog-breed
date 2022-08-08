@@ -1,7 +1,10 @@
 import React, { FormEvent, useCallback, useEffect, useState } from 'react';
 import jwtDecode, { InvalidTokenError } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-import { EMAIL_INPUT_TESTID, LOGIN_BUTTON_TESTID, LOGO_IMG_TESTID } from '../../test/utils/testIds';
+import {
+  EMAIL_INPUT_TESTID,
+  LOGIN_BUTTON_TESTID,
+  LOGO_IMG_TESTID } from '../../test/utils/testIds';
 import { requestLogin } from '../services/request';
 import { IError } from '../types/IErrorApi';
 import { IUser } from '../types/IUser';
