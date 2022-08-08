@@ -27,6 +27,7 @@ export const breeds = {
       'https://images.dog.ceo/breeds/pug/n02110958_10.jpg',
       'https://images.dog.ceo/breeds/pug/n02110958_10186.jpg',
       'https://images.dog.ceo/breeds/pug/n02110958_10193.jpg',
+
     ],
   },
   husky: {
