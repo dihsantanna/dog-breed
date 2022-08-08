@@ -53,6 +53,7 @@ export function RegisterPage() {
             placeholder="Digite seu email aqui"
             value={inputLogin}
             onChange={({ target }) => setInputLogin(target.value)}
+            required
           />
           <span>{loginError || null}</span>
         </label>
