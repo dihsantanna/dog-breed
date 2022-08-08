@@ -31,7 +31,7 @@ describe.skip('Testando componente ListPage', () => {
   });
 
   it(`Componente deve se capaz de renderizar uma grade de imagens de cachorros,
-  onde cada imagem deve ter o data-testid ${DOG_IMG}<index>`, () => {
+  onde cada imagem deve ter o data-testid ${DOG_IMG}<breed>-<index>`, () => {
     vi.mock('../../src/services/request', () => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const requestData = vi.fn();
@@ -42,7 +42,8 @@ describe.skip('Testando componente ListPage', () => {
       .mockImplementation(mockRequestData);
 
     const raceImages = breeds.chihuahua.list
-      .map((_image, index) => screen.getByTestId(DOG_IMG + index));
+      .map((_image, index) => screen
+        .getByTestId(DOG_IMG + breeds.chihuahua.breed + index));
 
     raceImages.forEach((image) => {
       expect(image).toBeInTheDocument();
