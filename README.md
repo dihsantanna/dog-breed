@@ -1,7 +1,7 @@
 
 # Seja bem-vindo(a) ao Dog Breed App :grin:
 
-Esta aplicação consite em un site onde é possivel ter acesso a variadas imagens de cães das raças `chihuahua`, `husky`, `labrador` e `pug`.
+Esta aplicação consite em um site onde é possivel ter acesso a variadas imagens de cães das raças `chihuahua`, `husky`, `labrador` e `pug`.
 
 Caso queira testar a aplicação em produção acesse [este link](https://dogbreed-00.netlify.app/).
 
