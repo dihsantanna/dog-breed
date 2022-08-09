@@ -10,6 +10,9 @@ import { IError } from '../types/IErrorApi';
 import { IUser } from '../types/IUser';
 import './registerPage.css';
 
+const DOG_BREED_LOGO_URL = `https://drive.google.com/u/1/uc?id=
+1OmrmWRaRmKmw_YlGblI6_lXXXATdUtpk&export=download`;
+
 export function RegisterPage() {
   const [inputLogin, setInputLogin] = useState('');
   const [loginError, setLoginError] = useState('');
@@ -43,7 +46,7 @@ export function RegisterPage() {
      <div className="register-page">
       <img
         data-testid={LOGO_IMG_TESTID}
-        src='src/assets/dog_breed_logo.svg'
+        src={DOG_BREED_LOGO_URL}
         alt="logo dog breed"
         className='register-logo'
       />

@@ -11,6 +11,11 @@ import './listPage.css';
 
 const breeds = ['Chihuahua', 'Husky', 'Labrador', 'Pug'];
 
+const DOG_BREED_LOGO_URL = `https://drive.google.com/u/1/uc?id=
+1OmrmWRaRmKmw_YlGblI6_lXXXATdUtpk&export=download`;
+const DOG_BREED_PAW_URL = `https://drive.google.com/u/1/uc?id=
+1WpXXsAS_WrQXUxVO-E_3u0OiwpTYffWW&export=download`;
+
 export function ListPage() {
   const [breedImages, setBreedImages] = useState<string[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
@@ -58,7 +63,7 @@ export function ListPage() {
         <header>
           <img
             data-testid={LOGO_IMG_TESTID}
-            src="src/assets/dog_breed_logo.svg"
+            src={DOG_BREED_LOGO_URL}
             alt="logo dog breed"
             className="listPage-logo"
           />
@@ -76,7 +81,7 @@ export function ListPage() {
               {
                 selectedBreed === breed.toLowerCase()
                   ? <img
-                      src="src/assets/dog_breed.svg"
+                      src={DOG_BREED_PAW_URL}
                       className='btn-logo'
                       alt='pata do logo da Dog Breed'
                     />
