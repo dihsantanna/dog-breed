@@ -1,7 +1,79 @@
+header {
+  align-items: center;
+  display: flex;
+  height: 9.93rem;
+  justify-content: center;
+}
+
+.listPage-logo {
+  width: 11.87rem;
+}
+
+.filter-breeds {
+  align-items: center;
+  background-color: var(--sweet-black);
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.filter-breeds button {
+  background-color: var(--sweet-black);
+  border: none;
+  border-radius: 0.3rem;
+  color: var(--shell-color);
+  font-size: 0.75rem;
+  font-weight: bold;
+  height: 2.5rem;
+  width: 5.31rem;
+}
+
+.filter-breeds button:disabled {
+  background-color: var(--shell-color);
+  color: var(--sweet-black);
+  position: relative;
+}
+
+.btn-logo {
+  position: absolute;
+  top: -0.19rem;
+  right: -0.19rem;
+  width: 1.25rem;
+}
+
+.msg-list-page {
+  align-items: center;
+  color: red;
+  display: flex;
+  font-size: 0.87rem;
+  font-weight: 600;
+  height: 3.12rem;
+  justify-content: center;
+}
+
 .image-list {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 375px;
+  width: 23.43rem;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 0;
+  }
+
+  from {
+    opacity: 0.5;
+  }
+}
+
+.load-logo {
+  animation: fadeIn 0.5s ease-in-out infinite;
+  margin: auto;
+  position: fixed;
+  top: 50vh;
+  height: 40vw;
 }

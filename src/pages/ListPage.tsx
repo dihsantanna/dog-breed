@@ -51,30 +51,54 @@ export function ListPage() {
 
   return (
     <>
-    <div>
+    <div
+      className="list-page"
+    >
         <header>
           <img
             data-testid={LOGO_IMG_TESTID}
-            src='src/assets/dog_breed_logo.svg'
+            src="src/assets/dog_breed_logo.svg"
             alt="logo dog breed"
-            className='listPage-logo'
+            className="listPage-logo"
           />
         </header>
-        <div>
+        <div
+          className="filter-breeds"
+        >
           {breeds.map((breed) => (
             <button
             key={`${breed}-button`}
             type="button"
             onClick={() => setSelectedBreed(breed.toLowerCase())}
-            >{breed}</button>
+            disabled={selectedBreed === breed.toLowerCase()}
+            >
+              {
+                selectedBreed === breed.toLowerCase()
+                  ? <img
+                      src="src/assets/dog_breed.svg"
+                      className='btn-logo'
+                      alt='pata do logo da Dog Breed'
+                    />
+                  : null
+              }
+              {breed}
+            </button>
           ))}
         </div>
-        <span>{errorMessage}</span>
+        <div
+          className="msg-list-page"
+        >
+          {errorMessage}
+        </div>
         <section
-          className='image-list'
+          className="image-list"
         >
           {isLoading
-            ? <span>Loading</span>
+            ? <img
+                src="src/assets/dog_breed.svg"
+                className='load-logo'
+                alt='pata do logo da Dog Breed'
+              />
             : breedImages.map((breedImg, index) => (
               <DogCardView
                 key={`${selectedBreed}-image-${index}`}
