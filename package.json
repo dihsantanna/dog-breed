@@ -11,7 +11,9 @@
     "test": "vitest",
     "test:ui": "npm test -- --ui",
     "coverage": "npm test -- --coverage",
-    "coverage:ui": "npm test -- --coverage --ui"
+    "coverage:ui": "npm test -- --coverage --ui",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down --remove-orphans"
   },
   "dependencies": {
     "axios": "^0.27.2",
