@@ -1,13 +1,15 @@
 import React from 'react';
 import { beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
 import jwtDecode from 'jwt-decode';
-import { render, screen, waitFor } from '../utils/test-utils';
+import { render, screen } from '../utils/test-utils';
 
 import { ListPage } from '../../src/pages/ListPage';
 import { DOG_IMG_TESTID, LOGO_IMG_TESTID } from '../utils/testIds';
 import { requestData, setToken } from '../../src/services/request';
 import { mockRequestData } from '../mocks/requestMock';
 import { breeds } from '../mocks/breeds';
+
+let unmountFuc: VoidFunction;
 
 describe('Testando componente ListPage', () => {
   beforeEach(() => {
@@ -28,26 +30,26 @@ describe('Testando componente ListPage', () => {
     (requestData as unknown as MockedFunction<typeof requestData>)
       .mockImplementation(mockRequestData);
     (setToken as unknown as MockedFunction<typeof setToken>)
-      .mockResolvedValue();
+      .mockReturnValue();
+
+    const { unmount } = render(<ListPage />);
+    unmountFuc = unmount;
   });
 
   afterEach(() => {
     vi.clearAllMocks();
+    unmountFuc();
   });
 
   it(`Componente deve ter uma imagem com data-testid "${LOGO_IMG_TESTID}"`, () => {
-    const { unmount } = render(<ListPage />);
     const logoImage = screen.getByTestId(LOGO_IMG_TESTID);
 
     expect(logoImage).toBeInTheDocument();
-
-    unmount();
   });
 
   it(`Componente deve possuir quatro botões para requisição das imagens
   por raça dos cachorros, um botão por cada raça de cachorro,
   as raças disponíveis são: Chihuahua, Husky, Labrador e Pug`, async () => {
-    const { unmount } = render(<ListPage />);
     const races = ['Chihuahua', 'Husky', 'Labrador', 'Pug'];
 
     const racesButtons = races.map((race) => screen.getByText(race));
@@ -55,12 +57,10 @@ describe('Testando componente ListPage', () => {
     racesButtons.forEach((button) => {
       expect(button).toBeInTheDocument();
     });
-    unmount();
   });
 
   it(`Componente deve se capaz de renderizar uma grade de imagens de cachorros,
   onde cada imagem deve ter o data-testid ${DOG_IMG_TESTID}<breed>-<index>`, async () => {
-    const { unmount } = render(<ListPage />);
     const raceImages = await Promise.all([
       screen.findByTestId(`${DOG_IMG_TESTID + breeds.chihuahua.breed}-${0}`),
       screen.findByTestId(`${DOG_IMG_TESTID + breeds.chihuahua.breed}-${1}`),
@@ -74,11 +74,8 @@ describe('Testando componente ListPage', () => {
       screen.findByTestId(`${DOG_IMG_TESTID + breeds.chihuahua.breed}-${9}`),
     ]);
 
-    waitFor(() => {
-      raceImages.forEach((image) => {
-        expect(image).toBeInTheDocument();
-      });
+    raceImages.forEach((image) => {
+      expect(image).toBeInTheDocument();
     });
-    unmount();
   });
 });

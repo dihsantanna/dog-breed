@@ -2,12 +2,14 @@ import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
 import jwtDecode from 'jwt-decode';
 import userEvent from '@testing-library/user-event';
-import { render, screen, waitFor } from '../utils/test-utils';
+import { render, screen } from '../utils/test-utils';
 
 import App from '../../src/App';
 import { loginSuccess, mockRequestData } from '../mocks/requestMock';
 import {
-  EMAIL_INPUT_TESTID, LOGIN_BUTTON_TESTID, DOG_IMG_TESTID,
+  EMAIL_INPUT_TESTID,
+  LOGIN_BUTTON_TESTID,
+  DOG_IMG_TESTID,
 } from '../utils/testIds';
 import { requestLogin, requestData, setToken } from '../../src/services/request';
 import { breeds } from '../mocks/breeds';
@@ -32,7 +34,7 @@ describe('testando rota "/list"', () => {
     (requestData as unknown as MockedFunction<typeof requestData>)
       .mockImplementation(mockRequestData);
     (setToken as unknown as MockedFunction<typeof setToken>)
-      .mockResolvedValue();
+      .mockReturnValue();
 
     (jwtDecode as unknown as MockedFunction<typeof jwtDecode>)
       .mockReturnValue({});
@@ -70,10 +72,8 @@ describe('testando rota "/list"', () => {
       screen.findByTestId(`${DOG_IMG_TESTID + breeds.chihuahua.breed}-${9}`),
     ]);
 
-    waitFor(() => {
-      defaultImages.forEach((image) => {
-        expect(image).toBeInTheDocument();
-      });
+    defaultImages.forEach((image) => {
+      expect(image).toBeInTheDocument();
     });
   });
 
@@ -96,10 +96,8 @@ describe('testando rota "/list"', () => {
         screen.findByTestId(`${DOG_IMG_TESTID + breeds.husky.breed}-${9}`),
       ]);
 
-      waitFor(() => {
-        huskyImages.forEach((image) => {
-          expect(image).toBeInTheDocument();
-        });
+      huskyImages.forEach((image) => {
+        expect(image).toBeInTheDocument();
       });
     },
   );
@@ -123,10 +121,8 @@ describe('testando rota "/list"', () => {
         screen.findByTestId(`${DOG_IMG_TESTID + breeds.labrador.breed}-${9}`),
       ]);
 
-      waitFor(() => {
-        labradorImages.forEach((image) => {
-          expect(image).toBeInTheDocument();
-        });
+      labradorImages.forEach((image) => {
+        expect(image).toBeInTheDocument();
       });
     },
   );
@@ -150,10 +146,8 @@ describe('testando rota "/list"', () => {
         screen.findByTestId(`${DOG_IMG_TESTID + breeds.pug.breed}-${9}`),
       ]);
 
-      waitFor(() => {
-        pugImages.forEach((image) => {
-          expect(image).toBeInTheDocument();
-        });
+      pugImages.forEach((image) => {
+        expect(image).toBeInTheDocument();
       });
     },
   );
@@ -167,9 +161,7 @@ describe('testando rota "/list"', () => {
       const raceImage = await screen
         .findByTestId(`${DOG_IMG_TESTID + breeds.pug.breed}-${0}`);
 
-      waitFor(() => {
-        expect(raceImage).toBeInTheDocument();
-      });
+      expect(raceImage).toBeInTheDocument();
 
       const chihuahuaButton = screen.getByText('Chihuahua');
       userEvent.click(chihuahuaButton);
@@ -187,10 +179,8 @@ describe('testando rota "/list"', () => {
         screen.findByTestId(`${DOG_IMG_TESTID + breeds.chihuahua.breed}-${9}`),
       ]);
 
-      waitFor(() => {
-        chihuahuaImages.forEach((image) => {
-          expect(image).toBeInTheDocument();
-        });
+      chihuahuaImages.forEach((image) => {
+        expect(image).toBeInTheDocument();
       });
     },
   );
