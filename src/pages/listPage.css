@@ -14,6 +14,24 @@ header {
   width: 11.87rem;
 }
 
+.logout-btn {
+  background-color: var(--sweet-black);
+  border: solid 0.1rem var(--sweet-black);
+  border-radius: 0.3rem;
+  color: var(--shell-color);
+  cursor: pointer;
+  padding: 0.25rem;
+  position: fixed;
+  right: 0.8rem;
+  top: 0.8rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.logout-btn:hover {
+  background-color: var(--shell-color);
+  color: var(--sweet-black);
+}
+
 .filter-breeds {
   align-items: center;
   background-color: var(--sweet-black);

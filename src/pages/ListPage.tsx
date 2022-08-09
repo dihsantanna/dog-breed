@@ -51,6 +51,11 @@ export function ListPage() {
     }
   }, [navigate, selectedBreed]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/register', { replace: true });
+  };
+
   useEffect(() => {
     requestBreedImages();
   }, [requestBreedImages]);
@@ -67,6 +72,11 @@ export function ListPage() {
             alt="logo dog breed"
             className="listPage-logo"
           />
+          <button
+            className="logout-btn"
+            type="button"
+            onClick={handleLogout}
+          >logout</button>
         </header>
         <div
           className="filter-breeds"
