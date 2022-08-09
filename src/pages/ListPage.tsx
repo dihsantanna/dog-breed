@@ -2,10 +2,11 @@ import jwtDecode, { InvalidTokenError } from 'jwt-decode';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LOGO_IMG_TESTID } from '../../test/utils/testIds';
-import { DogCard } from '../components/DogCard';
+import { DogCardView } from '../components/DogCardView';
 import { requestData, setToken } from '../services/request';
 import { IDogBreed } from '../types/IDogBreed';
 import { IError } from '../types/IErrorApi';
+import './listPage.css';
 
 const breeds = ['Chihuahua', 'Husky', 'Labrador', 'Pug'];
 
@@ -38,7 +39,7 @@ export function ListPage() {
 
       setBreedImages((data as IDogBreed).list);
     } catch (error) {
-      setErrorMessage((error as Error).message);
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -69,11 +70,13 @@ export function ListPage() {
           ))}
         </div>
         <span>{errorMessage}</span>
-        <section>
+        <section
+          className='image-list'
+        >
           {isLoading
             ? <span>Loading</span>
             : breedImages.map((breedImg, index) => (
-              <DogCard
+              <DogCardView
                 key={`${selectedBreed}-image-${index}`}
                 src={breedImg}
                 index={index}
