@@ -13,26 +13,26 @@ export function DogCardView({ breed, src, index }: DogCardViewProps) {
   const handleVisibility = () => setShow((lastState) => !lastState);
   return (
     <>
-    <div
-      className={`view-board ${show && 'show-view'}`}
-    >
-      <button
-        className='btn-close-view'
-        type='button'
-        onClick={handleVisibility}
-      >
-        <i className="bi bi-x"></i>
-      </button>
       <div
-        className='image-container'
+        className={`view-board ${show && 'show-view'}`}
       >
-        <img
-          className='dog-image-view'
-          src={src}
-          alt={`Imagem de um ${breed} ${index} expandida`}
-        />
+        <button
+          className='btn-close-view'
+          type='button'
+          onClick={handleVisibility}
+        >
+          <i className="bi bi-x"></i>
+        </button>
+        <div
+          className='image-container'
+        >
+          <img
+            className='dog-image-view'
+            src={src}
+            alt={`Imagem de um ${breed} ${index} expandida`}
+          />
+        </div>
       </div>
-    </div>
       <div
         className='card-image'
       >
