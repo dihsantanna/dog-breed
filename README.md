@@ -18,6 +18,7 @@ Caso queira testar a aplicação em produção acesse [este link](https://dogbre
 - [Figma](https://www.figma.com/)
 - [Axios](https://axios-http.com/ptbr/)
 - [ESLint](https://eslint.org/)
+- [TDD](https://www.devmedia.com.br/test-driven-development-tdd-simples-e-pratico/18533)
 
 
 ## Instalação
