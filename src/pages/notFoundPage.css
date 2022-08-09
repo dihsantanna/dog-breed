@@ -1,0 +1,25 @@
+.not-found-page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.not-found-container {
+  align-items: center;
+  display: flex;
+  color: var(--sweet-black);
+  flex-direction: column;
+  font-family: 'Lucida Sans', sans-serif;
+  font-weight: bold;
+  justify-content: center;
+  width: 90vw;
+}
+
+.not-found-img {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  max-width: 90vw;
+  width: 400px;
+}
