@@ -100,3 +100,24 @@ header {
     width: 100%;
   }
 }
+
+@media screen and (min-width: 769px) {
+  .list-page {
+    max-width: 73.13rem;
+  }
+
+  .image-list {
+    grid-template-columns: repeat(auto-fit, 16.87rem);
+    grid-gap: 1.87rem;
+  }
+
+  .filter-breeds button {
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+
+  .filter-breeds button:hover {
+    background-color: var(--shell-color);
+    color: var(--sweet-black);
+  }
+}
