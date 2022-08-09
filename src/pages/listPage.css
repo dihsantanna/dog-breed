@@ -1,0 +1,123 @@
+.list-page {
+  margin: 0;
+  width: 23.43rem;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  height: 9.93rem;
+  justify-content: center;
+}
+
+.listPage-logo {
+  width: 11.87rem;
+}
+
+.filter-breeds {
+  align-items: center;
+  background-color: var(--sweet-black);
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.filter-breeds button {
+  background-color: var(--sweet-black);
+  border: none;
+  border-radius: 0.3rem;
+  color: var(--shell-color);
+  font-size: 0.75rem;
+  font-weight: bold;
+  height: 2.5rem;
+  width: 5.31rem;
+}
+
+.filter-breeds button:disabled {
+  background-color: var(--shell-color);
+  color: var(--sweet-black);
+  position: relative;
+}
+
+.btn-logo {
+  position: absolute;
+  top: -0.19rem;
+  right: -0.19rem;
+  width: 1.25rem;
+}
+
+.msg-list-page {
+  align-items: center;
+  color: red;
+  display: flex;
+  font-size: 0.87rem;
+  font-weight: 600;
+  height: 3.12rem;
+  justify-content: center;
+}
+
+.image-list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  width: 23.43rem;
+}
+
+@media screen and (min-width: 376px) {
+  .list-page {
+    margin: 0 auto;
+    max-width: 39.5rem;
+    width: 100vw;
+  }
+
+  .listPage-logo {
+    width: 16.25rem;
+  }
+
+  .filter-breeds {
+    border-radius: 0.63rem;
+    height: 3.31rem;
+    max-width: 100%;
+  }
+
+  .filter-breeds button {
+    border-radius: 0.63rem;
+    font-size: 1rem;
+    height: 3.12rem;
+    width: 9.25rem;
+  }
+
+  .image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 12.5rem);
+    grid-gap: 0.93rem;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .list-page {
+    max-width: 73.13rem;
+  }
+
+  .image-list {
+    grid-template-columns: repeat(auto-fit, 16.87rem);
+    grid-gap: 1.87rem;
+  }
+
+  .filter-breeds button {
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+
+  .filter-breeds button:hover {
+    background-color: var(--shell-color);
+    color: var(--sweet-black);
+  }
+}

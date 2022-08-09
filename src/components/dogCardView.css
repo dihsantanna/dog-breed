@@ -1,0 +1,117 @@
+.view-board {
+  align-items: center;
+  background-color: #000000b3;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: visibility 0.8s linear, opacity 0.6s linear;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 1;
+}
+
+.show-view {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-close-view {
+  background-color: transparent;
+  border: none;
+  color: ghostwhite;
+  cursor: pointer;
+  font-size: 2rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  z-index: 2;
+}
+
+.dog-image-view {
+  border-radius: 100%;
+  object-fit: contain;
+  transform: scale(0);
+  transition: all linear 0.5s;
+  width: 100%;
+}
+
+.show-view .dog-image-view {
+  border-radius: 5%;
+  transform: scale(1);
+}
+
+.card-image {
+  align-items: center;
+  border-radius: 0.3rem;
+  display: flex;
+  height: 80vw;
+  justify-content: center;
+  margin-bottom: 0.93rem;
+  overflow: hidden;
+  position: relative;
+  width: 80vw;
+}
+
+.dog-image-sm {
+  cursor: pointer;
+  min-height: 100vw;
+  min-width: 100vw;
+}
+
+@media screen and (min-width: 376px) {
+  .btn-close-view {
+    font-size: 4rem;
+    top: 0.7rem;
+    right: 0.7rem;
+  }
+
+  .dog-image-view {
+    max-height: 85vh;
+    max-width: 90vw;
+    width: 100vw;
+  }
+
+  .card-image {
+    margin-bottom: 0;
+    max-height: 12.5rem;
+    max-width: 12.5rem;
+  }
+
+  .dog-image-sm {
+    min-height: 100%;
+    min-width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .card-image {
+    max-height: 16.87rem;
+    max-width: 16.87rem;
+    transition: all 0.5s ease-in;
+  }
+
+  .card-image:hover {
+    transform: scale(1.05);
+  }
+
+  .dog-image-sm {
+    transition: all 0.5s ease-in;
+  }
+
+  .dog-image-sm:hover {
+    filter: grayscale(70%);
+    transform: scale(1.1);
+  }
+
+  .btn-close-view {
+    transition: all 0.3s linear;
+  }
+  
+  .btn-close-view:hover {
+    color: red;
+  }
+}

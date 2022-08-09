@@ -1,0 +1,24 @@
+.loading-container {
+  align-items: center;
+  display: flex;
+  height: calc(100vh - 15.87rem);
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 0;
+  }
+
+  from {
+    opacity: 0.5;
+  }
+}
+
+.load-logo {
+  animation: fadeIn 0.5s ease-in-out infinite;
+  margin: auto;
+  width: 40vw;
+}
