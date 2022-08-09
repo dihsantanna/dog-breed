@@ -1,3 +1,8 @@
+.list-page {
+  margin: 0;
+  width: 23.43rem;
+}
+
 header {
   align-items: center;
   display: flex;
@@ -15,7 +20,8 @@ header {
   border-radius: 0.3rem;
   display: flex;
   justify-content: center;
-  width: 100vw;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .filter-breeds button {
@@ -57,23 +63,40 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto;
   width: 23.43rem;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 0;
+@media screen and (min-width: 376px) {
+  .list-page {
+    margin: 0 auto;
+    max-width: 39.5rem;
+    width: 100vw;
   }
 
-  from {
-    opacity: 0.5;
+  .listPage-logo {
+    width: 16.25rem;
   }
-}
 
-.load-logo {
-  animation: fadeIn 0.5s ease-in-out infinite;
-  margin: auto;
-  position: fixed;
-  top: 50vh;
-  height: 40vw;
+  .filter-breeds {
+    border-radius: 0.63rem;
+    height: 3.31rem;
+    max-width: 100%;
+  }
+
+  .filter-breeds button {
+    border-radius: 0.63rem;
+    font-size: 1rem;
+    height: 3.12rem;
+    width: 9.25rem;
+  }
+
+  .image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 12.5rem);
+    grid-gap: 0.93rem;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
 }

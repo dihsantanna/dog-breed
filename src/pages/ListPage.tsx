@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LOGO_IMG_TESTID } from '../../test/utils/testIds';
 import { DogCardView } from '../components/DogCardView';
+import { Loading } from '../components/Loading';
 import { requestData, setToken } from '../services/request';
 import { IDogBreed } from '../types/IDogBreed';
 import { IError } from '../types/IErrorApi';
@@ -94,11 +95,7 @@ export function ListPage() {
           className="image-list"
         >
           {isLoading
-            ? <img
-                src="src/assets/dog_breed.svg"
-                className='load-logo'
-                alt='pata do logo da Dog Breed'
-              />
+            ? <Loading />
             : breedImages.map((breedImg, index) => (
               <DogCardView
                 key={`${selectedBreed}-image-${index}`}
