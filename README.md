@@ -40,7 +40,7 @@ Caso queira testar a aplicação em produção acesse [este link](https://dogbre
   npm run compose:down
 ```
 
-3 - Renomeie o arquivo `.env.example` para `.env`, pois existe uma variável de ambiente(VITE_APP_URL=https://dogbreed-api.q9.com.br) que é necessária, e execute o comando abaixo: *(Caso tenha executado o passo 2 ignore este aqui)*
+3 - Renomeie o arquivo `.env.example` para `.env`, pois existe uma variável de ambiente(VITE_API_URL=https://dogbreed-api.q9.com.br) que é necessária, e execute o comando abaixo: *(Caso tenha executado o passo 2 ignore este aqui)*
 
 ```bash
   npm run install && npm run dev
