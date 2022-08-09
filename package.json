@@ -13,7 +13,8 @@
     "coverage": "npm test -- --coverage",
     "coverage:ui": "npm test -- --coverage --ui",
     "compose:up": "docker-compose up -d --build",
-    "compose:down": "docker-compose down --remove-orphans"
+    "compose:down": "docker-compose down --remove-orphans",
+    "install:docker": "npm install --silent && npm run compose:up"
   },
   "dependencies": {
     "axios": "^0.27.2",
