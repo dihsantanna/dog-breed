@@ -1,80 +1,91 @@
-# Desafio Dog Breed
 
-## Objetivos desse desafio
+# Seja bem-vindo(a) ao Dog Breed App :grin:
 
-Esperamos entender melhor os seguintes pontos:
+Esta aplicação consite em un site onde é possivel ter acesso a variadas imagens de cães das raças `chihuahua`, `husky`, `labrador` e `pug`.
 
-* Como você organiza e documenta o projeto
-* Seu estilo de trabalho e código
-* Seu nível de conhecimento sobre as ferramentas requeridas
+Caso queira testar a aplicação em produção acesse [este link](https://dogbreed-00.netlify.app/).
 
-## Ferramentas sugeridas
 
-* React+Typescript
-* IoC
-* Testes
-* Linter
 
-## Instruções
 
-Esperamos que você crie um app que capture os dados da [nossa api de raças de cachorro](https://dogbreed-api.q9.com.br), e apresente numa interface cumprindo os itens abaixo.
+## Stacks utilizadas :wrench:
 
-### Página de Cadastro
+- [React](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/pt/)
+- [Vite](https://vitejs.dev/)
+- [Vitest](https://vitest.dev/)
+- [Docker](https://www.docker.com/)
+- [Figma](https://www.figma.com/)
+- [Axios](https://axios-http.com/ptbr/)
+- [ESLint](https://eslint.org/)
 
-* Crie uma página `Register` com um campo de email, e autentique o usuário postando o email no [endpoint de cadastro/login](https://dogbreed-api.q9.com.br/register).
-* A chamada na API retornará um `token` JWT, que deverá ser armazenado para ser utilizada nas chamadas seguintes.
-* Após receber e armazenar o `token`, redirecione para a página de `List`.
-* A página de `Register` é a única página de acesso público. As demais rotas são todas privadas e requerem o envio do token conforme a documentação da API abaixo
 
-### Página de Lista de Cachorros
+## Instalação
 
-* No carregamento inicial da página de `List`, deverá ser feita uma chamada no [endpoint de list](https://dogbreed-api.q9.com.br/list).
-* A página de `List` deverá ter um menu com quatro rotas - `chihuahua`, `husky`, `labrador` e `pug`.
-* Cada rota, ao ser clicada, deve realizar uma chamada no [endpoint de list](https://dogbreed-api.q9.com.br/list), passando a respectiva `breed`. Quando não especificada, a `breed` default é `chihuahua`.
-
-### Página de Foto
-
-* Ao clicar em uma foto, a foto deverá ser ampliada e destacada dos demais itens da página, com um overlay.
-
-## Documentação da API Dog Breed
-
-URL da API: [`https://dogbreed-api.q9.com.br`](https://dogbreed-api.q9.com.br)
-
-Todas as requisições devem ser feitas com a header Content-Type: application/json.
-As respostas são codificadas em JSON.
-
-### POST /register
-
-#### Cadastro/Login de usuário
+1 - Antes de mais nada, faça um git clone do repositório e entre na pasta do projeto, usando o comando abaixo em seu terminal:
 
 ```bash
-POST /register
+  git clone git@github.com:dihsantanna/dog-breed.git && cd my-project
 ```
+
+2 - Caso tenha o docker em sua maquina basta executar o comando abaixo, senão vá para o passo 3:
 
 ```bash
-curl "https://dogbreed-api.q9.com.br/register" \
--H "Content-Type: application/json" \
--d '{ "email": "name@domain.com" }'
+  npm run install:docker
 ```
 
-### GET /list
+  * Após utilizar a aplicação, para encerra o docker compose utilize o codigo
+  ```bash
+  npm run compose:down
+```
 
-#### Listas de cachorros
+3 - Renomeie o arquivo `.env.example` para `.env`, pois existe uma variável de ambiente(VITE_APP_URL=https://dogbreed-api.q9.com.br) que é necessária, e execute o comando abaixo: *(Caso tenha executado o passo 2 ignore este aqui)*
 
 ```bash
-GET /list
+  npm run install && npm run dev
 ```
+
+4 - Para abrir a aplicação, pelo seu navegador, acesse [http://localhost:3000/](http://localhost:3000/)
+
+
+
+## Rodando os testes
+
+Para rodar os testes, é necessario ter rodado o comando `npm install` caso ainda não tenha rodado. Logo após rode o seguintes comandos:
+
+Teste simples ui intuitiva
 
 ```bash
-curl "https://dogbreed-api.q9.com.br/list" \
--H "Authorization: $TOKEN" \
--H "Content-Type: application/json"
+  npm test
 ```
 
-##### Querystring
+Caso queira queira verificar os teste de forma mais intuitiva em seu navegador, utilize o seguinte codigo
 
-##### ?breed
+```bash
+  npm run test:ui
+```
 
-**Default**: `chihuahua`<br/>
-**Type**: `string`<br/>
-**Options**: `chihuahua`, `husky`, `pug`, `labrador`
+Caso queira ter acesso a cobertura dos testes, rode o comando
+
+```bash
+  npm run coverage
+```
+
+Para encerrar os testes, no terminal que está rodando aperte a tecla `Q`.
+
+
+
+
+
+
+## Rodando o Linter
+
+Para rodar o linter execute o comando
+
+```bash
+  npm run lint
+```
+
+## Figma
+
+*O projeto foi baseado no modelo figma [dog-breed](https://www.figma.com/file/Ikoe1y6OSWMrYzxiHqaK9i/Dog-Breed?node-id=13%3A72) que eu projetei exclusivamente para este projeto.
