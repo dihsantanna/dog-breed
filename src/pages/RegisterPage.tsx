@@ -9,9 +9,7 @@ import { requestLogin } from '../services/request';
 import { IError } from '../types/IErrorApi';
 import { IUser } from '../types/IUser';
 import './registerPage.css';
-
-const DOG_BREED_LOGO_URL = `https://drive.google.com/u/1/uc?id=
-1OmrmWRaRmKmw_YlGblI6_lXXXATdUtpk&export=download`;
+import  DOG_BREED_LOGO_URL from '../assets/dog_breed_logo.svg';
 
 export function RegisterPage() {
   const [inputLogin, setInputLogin] = useState('');
