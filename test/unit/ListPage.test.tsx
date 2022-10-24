@@ -1,43 +1,42 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-shadow */
+import { Session } from '@supabase/supabase-js';
 import { beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
-import jwtDecode from 'jwt-decode';
 import { render, screen } from '../utils/test-utils';
 
 import { ListPage } from '../../src/pages/ListPage';
-import { DOG_IMG_TESTID, LOGO_IMG_TESTID } from '../utils/testIds';
-import { requestData, setToken } from '../../src/services/request';
-import { mockRequestData } from '../mocks/requestMock';
+import { requestData } from '../../src/services/request';
+import { supabase } from '../../src/services/supabase';
 import { breeds } from '../mocks/breeds';
+import { mockRequestData } from '../mocks/requestMock';
+import { DOG_IMG_TESTID, LOGO_IMG_TESTID } from '../utils/testIds';
 
 let unmountFuc: VoidFunction;
 
 describe('Testando componente ListPage', () => {
   beforeEach(() => {
     vi.mock('../../src/services/request', () => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const requestData = vi.fn();
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const setToken = vi.fn();
-      return { requestData, setToken };
+      return { requestData };
     });
-
-    vi.mock('jwt-decode');
-
-    window.localStorage.setItem('token', 'token');
-
-    (jwtDecode as unknown as MockedFunction<typeof jwtDecode>)
-      .mockReturnValue({});
     (requestData as unknown as MockedFunction<typeof requestData>)
       .mockImplementation(mockRequestData);
-    (setToken as unknown as MockedFunction<typeof setToken>)
-      .mockReturnValue();
+
+    supabase.auth.getSession = vi.fn(() => (
+      Promise.resolve({
+        data: {
+          session: true as unknown as Session
+        },
+        error: null
+      })
+    ));
 
     const { unmount } = render(<ListPage />);
     unmountFuc = unmount;
   });
 
   afterEach(() => {
-    vi.clearAllMocks();
+    vi.resetAllMocks();
+    vi.restoreAllMocks();
     unmountFuc();
   });
 

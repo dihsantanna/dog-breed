@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DOG_IMG_TESTID } from '../../test/utils/testIds';
 import './dogCardView.css';
 

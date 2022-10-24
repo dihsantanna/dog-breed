@@ -1,4 +1,3 @@
-
 version: '3.9'
 services:
   web:
@@ -13,5 +12,8 @@ services:
       - '.:/app'
       - '/app/node_modules'
     environment:
-      - VITE_API_URL=https://dogbreed-api.q9.com.br
+      - VITE_API_URL=https://dog.ceo/api/breed
+      - VITE_SUPABASE_URL=https://zmwaeevxxhxnfahxfjbt.supabase.co
+      - VITE_SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inptd2FlZXZ4eGh4bmZhaHhmamJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjYzNzIxNDYsImV4cCI6MTk4MTk0ODE0Nn0.Jffu5BwNIh2CHHEIST0YhHrJ3TKZhhYGulAzzEFYLHY
+      - VITE_SUPABASE_PASS=senha-padrao
       - CHOKIDAR_USEPOLLING=true

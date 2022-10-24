@@ -1,9 +1,11 @@
 
 # Seja bem-vindo(a) ao Dog Breed App :grin:
 
-Esta aplicação consite em um site onde é possivel ter acesso a variadas imagens de cães das raças `chihuahua`, `husky`, `labrador` e `pug`.
+Esta aplicação consiste em um site onde é possível ter acesso a variadas imagens de cães das raças `chihuahua`, `husky`, `labrador` e `pug`.
 
 Caso queira testar a aplicação em produção acesse [este link](https://dogbreed-00.netlify.app/).
+
+A API utilizada nesta aplicação foi a `DOG API` caso queira saber mais sobre ela ou ver sua documentação é só clicar [aqui](https://dog.ceo/dog-api/).
 
 
 
@@ -19,6 +21,7 @@ Caso queira testar a aplicação em produção acesse [este link](https://dogbre
 - [Axios](https://axios-http.com/ptbr/)
 - [ESLint](https://eslint.org/)
 - [TDD](https://www.devmedia.com.br/test-driven-development-tdd-simples-e-pratico/18533)
+- [Supabase](https://supabase.com/)
 
 
 ## Instalação
@@ -35,12 +38,14 @@ Caso queira testar a aplicação em produção acesse [este link](https://dogbre
   npm run install:docker
 ```
 
-  * Após utilizar a aplicação, para encerra o docker compose utilize o codigo
+  * Após utilizar a aplicação, para encerra o docker compose utilize o código
   ```bash
   npm run compose:down
 ```
 
-3 - Renomeie o arquivo `.env.example` para `.env`, pois existe uma variável de ambiente(VITE_API_URL=https://dogbreed-api.q9.com.br) que é necessária, e execute o comando abaixo: *(Caso tenha executado o passo 2 ignore este aqui)*
+** Caso tenha optado pelo docker o passo 3 (três) não se faz necessário.
+
+3 - Renomeie o arquivo `.env.example` para `.env`. (Atenção os valores de variáveis utilizados disponibilizei para fins didáticos, todos eles funcionam, mas claro que em um ambiente realmente profissional eles não seriam divulgados) Você não precisa alterar nenhum valor.
 
 ```bash
   npm run install && npm run dev
@@ -52,7 +57,7 @@ Caso queira testar a aplicação em produção acesse [este link](https://dogbre
 
 ## Rodando os testes
 
-Para rodar os testes, é necessario ter rodado o comando `npm install` caso ainda não tenha rodado. Logo após rode o seguintes comandos:
+Para rodar os testes, é necessário ter rodado o comando `npm install` caso ainda não tenha rodado. Logo após rode o seguintes comandos:
 
 Teste simples ui intuitiva
 
@@ -60,7 +65,7 @@ Teste simples ui intuitiva
   npm test
 ```
 
-Caso queira queira verificar os teste de forma mais intuitiva em seu navegador, utilize o seguinte codigo
+Caso queira queira verificar os teste de forma mais intuitiva em seu navegador, utilize o seguinte código
 
 ```bash
   npm run test:ui
@@ -73,10 +78,6 @@ Caso queira ter acesso a cobertura dos testes, rode o comando
 ```
 
 Para encerrar os testes, no terminal que está rodando aperte a tecla `Q`.
-
-
-
-
 
 
 ## Rodando o Linter

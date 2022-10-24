@@ -1,8 +1,5 @@
-import React from 'react';
+import DOG_BREED_PAW_URL from '../assets/dog_paw.svg';
 import './loading.css';
-
-const DOG_BREED_PAW_URL = `https://drive.google.com/u/1/uc?id=
-1WpXXsAS_WrQXUxVO-E_3u0OiwpTYffWW&export=download`;
 
 export function Loading() {
   return (

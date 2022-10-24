@@ -1,8 +1,10 @@
-import React from 'react';
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '../utils/test-utils';
-import { EMAIL_INPUT_TESTID, LOGIN_BUTTON_TESTID, LOGO_IMG_TESTID } from '../utils/testIds';
 import { RegisterPage } from '../../src/pages/RegisterPage';
+import { render, screen } from '../utils/test-utils';
+import {
+  EMAIL_INPUT_TESTID,
+  LOGIN_BUTTON_TESTID, LOGO_IMG_TESTID
+} from '../utils/testIds';
 
 describe('Testando componente RegisterPage', () => {
   beforeEach(() => {

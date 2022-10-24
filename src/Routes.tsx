@@ -1,5 +1,4 @@
-import React from 'react';
-import { Routes as SwitchRoutes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes as SwitchRoutes } from 'react-router-dom';
 import { ListPage } from './pages/ListPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { RegisterPage } from './pages/RegisterPage';

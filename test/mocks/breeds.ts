@@ -1,7 +1,7 @@
 export const breeds = {
   chihuahua: {
     breed: 'chihuahua',
-    list: [
+    message: [
       'https://images.dog.ceo/breeds/chihuahua/n02085620_10074.jpg',
       'https://images.dog.ceo/breeds/chihuahua/n02085620_10131.jpg',
       'https://images.dog.ceo/breeds/chihuahua/n02085620_10621.jpg',
@@ -16,7 +16,7 @@ export const breeds = {
   },
   pug: {
     breed: 'pug',
-    list: [
+    message: [
       'https://images.dog.ceo/breeds/pug/IMG_0226.jpg',
       'https://images.dog.ceo/breeds/pug/IMG_0233.jpg',
       'https://images.dog.ceo/breeds/pug/IMG_3507.jpg',
@@ -32,7 +32,7 @@ export const breeds = {
   },
   husky: {
     breed: 'husky',
-    list: [
+    message: [
       'https://images.dog.ceo/breeds/husky/20180901_150234.jpg',
       'https://images.dog.ceo/breeds/husky/20180904_185604.jpg',
       'https://images.dog.ceo/breeds/husky/20180924_193829.jpg',
@@ -47,7 +47,7 @@ export const breeds = {
   },
   labrador: {
     breed: 'labrador',
-    list: [
+    message: [
       'https://images.dog.ceo/breeds/labrador/IMG_4708.jpg',
       'https://images.dog.ceo/breeds/labrador/IMG_4709.jpg',
       'https://images.dog.ceo/breeds/labrador/IMG_6236.JPG',

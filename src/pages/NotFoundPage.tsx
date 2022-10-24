@@ -1,4 +1,3 @@
-import React from 'react';
 import './notFoundPage.css';
 
 const DOG_BREED_NOT_FOUND_URL = `https://drive.google.com/u/1/uc?id=

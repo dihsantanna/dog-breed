@@ -1,17 +1,15 @@
-import React, { FormEvent, useCallback, useEffect, useState } from 'react';
-import jwtDecode, { InvalidTokenError } from 'jwt-decode';
+import { AuthError } from '@supabase/supabase-js';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   EMAIL_INPUT_TESTID,
   LOGIN_BUTTON_TESTID,
-  LOGO_IMG_TESTID } from '../../test/utils/testIds';
+  LOGO_IMG_TESTID
+} from '../../test/utils/testIds';
+import DOG_BREED_LOGO_URL from '../assets/dog_breed_logo.svg';
 import { requestLogin } from '../services/request';
-import { IError } from '../types/IErrorApi';
-import { IUser } from '../types/IUser';
+import { supabase } from '../services/supabase';
 import './registerPage.css';
-
-const DOG_BREED_LOGO_URL = `https://drive.google.com/u/1/uc?id=
-1OmrmWRaRmKmw_YlGblI6_lXXXATdUtpk&export=download`;
 
 export function RegisterPage() {
   const [inputLogin, setInputLogin] = useState('');
@@ -19,22 +17,41 @@ export function RegisterPage() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const { data, status } = await requestLogin('/register', { email: inputLogin });
-    if (status !== 200) {
-      setLoginError((data as IError).error.message);
-      return;
+  const validateLogin = () => {
+    if (!inputLogin) {
+      setLoginError('Campo obrigatório');
+      return false;
     }
-    const { user: { token } } = data as IUser;
-    localStorage.setItem('token', token);
-    navigate('../list', { replace: true });
+
+    const re = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/gi;
+
+    if (!re.test(inputLogin)) {
+      setLoginError('Email inválido');
+      return false;
+    }
+    setLoginError('');
+    return true;
   };
 
-  const isLogged = useCallback(() => {
-    const token = localStorage.getItem('token');
-    if (token && !jwtDecode<InvalidTokenError>(token).message) {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      if (!validateLogin()) {
+        return;
+      }
+
+      await requestLogin(inputLogin);
+
       navigate('../list', { replace: true });
+    } catch (error) {
+      setLoginError((error as AuthError).message);
+    }
+  };
+
+  const isLogged = useCallback(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      navigate('/list', { replace: true });
     }
   }, [navigate]);
 
