@@ -23,7 +23,7 @@ const mockGetSession = (bool: boolean) => {
   ));
 };
 
-describe.skip('Testando rota "/register"', () => {
+describe('Testando rota "/register"', () => {
   beforeEach(() => {
     vi.mock('../../src/services/request', () => {
       const requestLogin = vi.fn();
