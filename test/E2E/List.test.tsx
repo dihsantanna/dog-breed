@@ -1,43 +1,42 @@
-import React from 'react';
-import { afterEach, beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
-import jwtDecode from 'jwt-decode';
+/* eslint-disable @typescript-eslint/no-shadow */
+import { Session } from '@supabase/supabase-js';
 import userEvent from '@testing-library/user-event';
+import { afterEach, beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
 import { render, screen } from '../utils/test-utils';
 
 import App from '../../src/App';
+import { requestData, requestLogin } from '../../src/services/request';
+import { supabase } from '../../src/services/supabase';
+import { breeds } from '../mocks/breeds';
 import { loginSuccess, mockRequestData } from '../mocks/requestMock';
 import {
-  EMAIL_INPUT_TESTID,
-  LOGIN_BUTTON_TESTID,
-  DOG_IMG_TESTID,
+  DOG_IMG_TESTID, EMAIL_INPUT_TESTID,
+  LOGIN_BUTTON_TESTID
 } from '../utils/testIds';
-import { requestLogin, requestData, setToken } from '../../src/services/request';
-import { breeds } from '../mocks/breeds';
 
 let unmountFunc: VoidFunction;
 
 describe('testando rota "/list"', () => {
   beforeEach(async () => {
     vi.mock('../../src/services/request', () => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const requestLogin = vi.fn();
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const requestData = vi.fn();
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const setToken = vi.fn();
-      return { requestLogin, requestData, setToken };
+      return { requestLogin, requestData };
     });
-    vi.mock('jwt-decode');
 
     (requestLogin as unknown as MockedFunction<typeof requestLogin>)
       .mockResolvedValue(loginSuccess);
     (requestData as unknown as MockedFunction<typeof requestData>)
       .mockImplementation(mockRequestData);
-    (setToken as unknown as MockedFunction<typeof setToken>)
-      .mockReturnValue();
 
-    (jwtDecode as unknown as MockedFunction<typeof jwtDecode>)
-      .mockReturnValue({});
+    supabase.auth.getSession = vi.fn(() => (
+      Promise.resolve({
+        data: {
+          session: true as unknown as Session
+        },
+        error: null
+      })
+    ));
 
     const { user, unmount } = render(<App />);
     const emailInput = screen.getByTestId(EMAIL_INPUT_TESTID);
@@ -52,7 +51,8 @@ describe('testando rota "/list"', () => {
   });
 
   afterEach(() => {
-    vi.clearAllMocks();
+    vi.resetAllMocks();
+    vi.restoreAllMocks();
     window.localStorage.clear();
     unmountFunc();
   });
