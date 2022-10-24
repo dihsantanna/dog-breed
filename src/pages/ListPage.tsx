@@ -1,20 +1,18 @@
-import jwtDecode, { InvalidTokenError } from 'jwt-decode';
-import React, { useCallback, useEffect, useState } from 'react';
+import { AuthError } from '@supabase/supabase-js';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LOGO_IMG_TESTID } from '../../test/utils/testIds';
+import DOG_BREED_LOGO_URL from '../assets/dog_breed_logo.svg';
+import DOG_BREED_PAW_URL from '../assets/dog_paw.svg';
 import { DogCardView } from '../components/DogCardView';
 import { Loading } from '../components/Loading';
-import { requestData, setToken } from '../services/request';
+import { requestData } from '../services/request';
+import { supabase } from '../services/supabase';
 import { IDogBreed } from '../types/IDogBreed';
 import { IError } from '../types/IErrorApi';
 import './listPage.css';
 
 const breeds = ['Chihuahua', 'Husky', 'Labrador', 'Pug'];
-
-const DOG_BREED_LOGO_URL = `https://drive.google.com/u/1/uc?id=
-1OmrmWRaRmKmw_YlGblI6_lXXXATdUtpk&export=download`;
-const DOG_BREED_PAW_URL = `https://drive.google.com/u/1/uc?id=
-1WpXXsAS_WrQXUxVO-E_3u0OiwpTYffWW&export=download`;
 
 export function ListPage() {
   const [breedImages, setBreedImages] = useState<string[]>([]);
@@ -28,31 +26,30 @@ export function ListPage() {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      const token = localStorage.getItem('token');
+      const { data: { session } } = await supabase.auth.getSession();
 
-      if (!token || jwtDecode<InvalidTokenError>(token).message) {
-        navigate('../register', { replace: true });
+      if (!session) {
+        navigate('/register', { replace: true });
         return;
       }
 
-      setToken(token as string);
-      const { data, status } = await requestData(`/list?breed=${selectedBreed}`);
+      const { data, status } = await requestData(selectedBreed);
 
       if (status !== 200) {
         setErrorMessage((data as IError).error.message);
         return;
       }
 
-      setBreedImages((data as IDogBreed).list);
+      setBreedImages((data as IDogBreed).message);
     } catch (error) {
-      console.log(error);
+      setErrorMessage((error as AuthError).message);
     } finally {
       setIsLoading(false);
     }
   }, [navigate, selectedBreed]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     navigate('/register', { replace: true });
   };
 
