@@ -5,6 +5,8 @@ Esta aplicação consiste em um site onde é possível ter acesso a variadas ima
 
 Caso queira testar a aplicação em produção acesse [este link](https://dogbreed-00.netlify.app/).
 
+A API utilizada nesta aplicação foi a `DOG API` caso queira saber mais sobre ela ou ver sua documentação é só clicar [aqui](https://dog.ceo/dog-api/).
+
 
 
 
@@ -41,7 +43,9 @@ Caso queira testar a aplicação em produção acesse [este link](https://dogbre
   npm run compose:down
 ```
 
-3 - Renomeie o arquivo `.env.example` para `.env`, pois existe uma variável de ambiente(VITE_API_URL=https://dogbreed-api.q9.com.br) que é necessária, e execute o comando abaixo: *(Caso tenha executado o passo 2 ignore este aqui)*
+** Caso tenha optado pelo docker o passo 3 (três) não se faz necessário.
+
+3 - Renomeie o arquivo `.env.example` para `.env`. (Atenção os valores de variáveis utilizados disponibilizei para fins didáticos, todos eles funcionam, mas claro que em um ambiente realmente profissional eles não seriam divulgados) Você não precisa alterar nenhum valor.
 
 ```bash
   npm run install && npm run dev
