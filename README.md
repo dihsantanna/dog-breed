@@ -7,7 +7,7 @@ Caso queira testar a aplicação em produção acesse [este link](https://dogbre
 
 A API utilizada nesta aplicação foi a `DOG API` caso queira saber mais sobre ela ou ver sua documentação é só clicar [aqui](https://dog.ceo/dog-api/).
 
-
+![foto de demonstração](demonstracao.gif)
 
 
 ## Stacks utilizadas :wrench:
