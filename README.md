@@ -5,6 +5,8 @@ Esta aplicação consiste em um site onde é possível ter acesso a variadas ima
 
 Caso queira testar a aplicação em produção acesse [este link](https://dogbreed-00.netlify.app/).
 
+Para logar utilize: `email@email.com`.
+
 A API utilizada nesta aplicação foi a `DOG API` caso queira saber mais sobre ela ou ver sua documentação é só clicar [aqui](https://dog.ceo/dog-api/).
 
 ![foto de demonstração](demonstracao.gif)
